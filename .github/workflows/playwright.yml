@@ -22,7 +22,7 @@ jobs:
     outputs:
       changed: ${{ steps.filter.outputs.changed }}
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
     # For pull requests it's not necessary to checkout the code but for the main branch it is
     - uses: dorny/paths-filter@v4
       id: filter
@@ -47,7 +47,7 @@ jobs:
         shardTotal: [4]
       fail-fast: false
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
     - uses: oven-sh/setup-bun@v2
     - uses: actions/setup-python@v6
       with:
@@ -86,7 +86,7 @@ jobs:
     if: ${{ !cancelled() && needs.changes.outputs.changed == 'true' }}
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v6
+    - uses: actions/checkout@v7
     - uses: oven-sh/setup-bun@v2
     - name: Install dependencies
       run: bun ci
